@@ -1,0 +1,14 @@
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  one:
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Dump GitHub REF
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_REF"
+          echo "${GITHUB_REF:-refs/heads/}"
