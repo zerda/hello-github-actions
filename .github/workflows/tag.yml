@@ -13,4 +13,5 @@ jobs:
         run: |
           echo "$GITHUB_REF"
           echo "${GITHUB_REF#refs/tags/}"
+          NAME_TAG="foo.azurecr.io/bar-baz:${GITHUB_REF#refs/tags/}"
           echo "$NAME_TAG"
