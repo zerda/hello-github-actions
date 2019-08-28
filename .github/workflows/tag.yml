@@ -9,6 +9,8 @@ jobs:
       - name: Dump GitHub REF
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
+          NAME_TAG: "foo.azurecr.io/bar-baz:${${GITHUB_REF#refs/tags/}#v}"
         run: |
           echo "$GITHUB_REF"
-          echo "${GITHUB_REF:-refs/heads/}"
+          echo "${${GITHUB_REF#refs/tags/}#v}"
+          echo "$NAME_TAG"
